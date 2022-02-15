@@ -6,17 +6,17 @@ from uuid import uuid4
 def rename_country_logos(instance, filename):
 	filebase, extension = filename.split('.')
 	if instance.pk:
-		return "country_logo/{}.{}".format(instance.pk, extension)
+		return "images/country_logos/{}.{}".format(instance.pk, extension)
 	else:
-		return "country_logo/{}.{}".format(instance.country_name, extension)
+		return "images/country_logos/{}.{}".format(instance.country_name, extension)
 
 
 def rename_brand_logo(instance, filename):
 	filebase, extension = filename.split('.')
 	if instance.pk:
-		return "brand_logo/{}.{}".format(instance.pk, extension)
+		return "images/brand_logos/{}.{}".format(instance.pk, extension)
 	else:
-		return "brand_logo/{}.{}".format(uuid4().hex(), extension)
+		return "images/brand_logos/{}.{}".format(uuid4().hex(), extension)
 
 
 class Country(models.Model):
@@ -77,3 +77,4 @@ class Comment(models.Model):
 	
 	class Meta:
 		ordering = ['-comment_last_updated_on', '-comment_created_on']
+		
