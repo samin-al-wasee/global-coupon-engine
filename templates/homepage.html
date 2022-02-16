@@ -28,7 +28,12 @@
 <!--                <a class="btn btn-light btn-lg border-end rounded-0 text-dark">Search discounts in:</a>-->
 <!--            </div>-->
             <div class="col-md-auto mx-0 p-0">
-
+                <select class="form-select form-select-lg rounded-0 overflow-auto">
+                    <option selected>Select a country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                    {% for country in countries %}
+                        <option>{{ country.country_name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
+                    {% endfor %}
+                </select>
             </div>
             <div class="col-md-auto mx-0 p-0">
                 <button class="btn btn-danger btn-lg rounded-0 text-light"><b class="p-2">Search</b></button>
@@ -53,7 +58,7 @@
         </div>
     </div>
     <div class="container-fluid bg-light">
-        <div class="row m-2 p-4 align-items-center">
+        <div class="row m-2 p-4 flex-column-reverse flex-md-row align-items-center">
             <div class="col-lg-6 p-4">
                 <h1>Searching for discounts?</h1>
                 <h2>Stop right there!</h2>
@@ -78,7 +83,7 @@
         </div>
     </div>
     <div class="container-fluid bg-light">
-        <div class="row m-2 p-4 align-items-center">
+        <div class="row mx-2 mt-2 p-4 flex-column-reverse flex-md-row align-items-center">
             <div class="col-lg-6">
                 <h1>Discover the world of Picodi</h1>
                 <p>Shoppers from 41 countries across the globe can now enjoy Picodi. Join them and choose one of Picodi’s websites. Let the shopping adventure begin with the best discounts available in your country!</p>
@@ -89,4 +94,5 @@
             </div>
         </div>
     </div>
+        {% include "country_list_footer.html" %}
 {% endblock %}
