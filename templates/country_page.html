@@ -1,10 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base_footer.html" %}
+{% load static %}
+{% block Stylesheet %}
+    <link href="{% static 'promotion/css/country_page.css' %}" rel="stylesheet">
+{% endblock %}
+{% block Title %}
+    Country
+{% endblock %}
+{% block Content %}
+    {% include "navbar_header.html" %}
+    <div class="container-fluid p-4 text-light" id="country_page_sub_header">
+        <div class="row px-4 pt-4 justify-content-center">
+            <div class="col-md-auto">
+                <h1>
+                    Picodi: All discounts in one place!
+                </h1>
+            </div>
+        </div>
+        <div class="row p-4 justify-content-center">
+            <div class="col-md-auto">
+                <h4>
+                    Cashback, coupons and promo codes for all shops and brands in UAE.
+                </h4>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="container bg-dark">
+            <div class="row">
+                {% for brand in brands %}
+                    <div class="col-md-2">
+                        <div class="container my-2 bg-light">
+                            <div class="row justify-content-center">
+                                <div class="col-md-auto text-center">
+                                    <a>
+                                        <img height="96" width="128" src="{% get_media_prefix %}{{ brand.brand_logo }}">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <h3>Trending Now</h3>
+    </div>
+    <div class="container-fluid bg-dark">
+        <div class="row">
+            {% for offer in offers %}
+                <div class="col-md-2">
+                    <div class="container my-2 bg-light">
+                        <div class="row justify-content-center">
+                            <div class="col-md-auto text-center">
+                                <a>
+                                    <img height="96" width="128" src="{% get_media_prefix %}{{ offer.offered_by.brand_logo }}">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="coll-md-auto text-center">
+                                <h4>{{ offer.offer_title }}</h4>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-auto text-center">
+                                <button class="btn btn-lg btn-success rounded-pill">
+                                    Get it now!
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% include "how_does_picodi_work.html" %}
+{% endblock %}

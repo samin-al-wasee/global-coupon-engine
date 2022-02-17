@@ -56,7 +56,7 @@ class Offer(models.Model):
 	offered_in = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name='Country')
 	offer_type = models.CharField(max_length=4, choices=choices_offer_type, verbose_name="Type")
 	offer_amount = models.FloatField(verbose_name='Amount')
-	offer_code = models.CharField(max_length=20, verbose_name="Code", help_text="Leave this field empty for a deal.", default="You don't need any code!")
+	offer_code = models.CharField(max_length=30, verbose_name="Code", help_text="Leave this field empty for deals.", default="You don't need any code!")
 	offer_expires_on = models.DateField(verbose_name='Expires On')
 	offer_next_available_on = models.DateField(verbose_name='Next Available On')
 	offer_created_on = models.DateTimeField(auto_now_add=True, verbose_name='Created On')
