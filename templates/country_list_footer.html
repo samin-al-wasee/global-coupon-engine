@@ -1,11 +1,11 @@
 {% load static %}
 <div class="container-fluid">
     <div class="container">
-        <div class="row mx-2 mb-2 p-4">
+        <div class="row mx-2 mb-2 p-4 justify-content-center">
             {% for country in countries %}
                 <div class="col-md-2 p-2 m-2 hstack">
-                    <img height="24" width="32" class="img-fluid rounded m-" src="{% get_media_prefix %}{{ country.country_logo }}">
-                    <a href="" class="link-dark m-2 text-decoration-none">{{ country.country_name }}</a>
+                    <img height="24" width="32" class="img-fluid rounded m-" src="{% get_media_prefix %}{{ country.country_logo }}" alt="">
+                    <a href="{{ country.get_absolute_url }}" class="link-dark m-2 text-decoration-none">{{ country.country_name }}</a>
                 </div>
             {% endfor %}
         </div>

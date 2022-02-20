@@ -4,7 +4,7 @@
     <link href="{% static 'promotion/css/country_page.css' %}" rel="stylesheet">
 {% endblock %}
 {% block Title %}
-    Country
+    Offers: {{ target_country }}
 {% endblock %}
 {% block Content %}
     {% include "navbar_header.html" %}
@@ -19,21 +19,26 @@
         <div class="row p-4 justify-content-center">
             <div class="col-md-auto">
                 <h4>
-                    Cashback, coupons and promo codes for all shops and brands in UAE.
+                    Cashback, coupons and promo codes for all shops and brands in {{ target_country.country_name }}.
                 </h4>
             </div>
         </div>
     </div>
     <div class="container-fluid p-4 bg-light">
         <div class="container p-4">
+            <div class="row px-2">
+                <div class="col-md">
+                    <h4>Brands</h4>
+                </div>
+            </div>
             <div class="row p-2">
                 {% for brand in brands %}
                     <div class="col-md-3">
                         <div class="container my-2 py-2 bg-white">
                             <div class="row justify-content-center">
                                 <div class="col-md-auto text-center">
-                                    <a>
-                                        <img height="96" width="128" src="{% get_media_prefix %}{{ brand.brand_logo }}">
+                                    <a href="{{ brand.brand_slug }}">
+                                        <img height="96" width="128" src="{% get_media_prefix %}{{ brand.brand_logo }}" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -43,13 +48,13 @@
             </div>
         </div>
     </div>
-    <div class="container-fluid my-2 bg-light">
-       <div class="container">
-            <h4>Trending Now</h4>
-       </div>
-    </div>
     <div class="container-fluid p-4 bg-light">
-        <div class="container p-2 bg-light">
+        <div class="container px-2 pb-2 bg-light">
+            <div class="row px-2">
+                <div class="column-md">
+                    <h4>Trending Now</h4>
+                </div>
+            </div>
             <div class="row p-2">
                 {% for offer in offers %}
                     <div class="col-md-4">
@@ -57,13 +62,13 @@
                             <div class="row my-4 justify-content-center">
                                 <div class="col-md-auto text-center">
                                     <a>
-                                        <img height="111" width="148" src="{% get_media_prefix %}{{ offer.offered_by.brand_logo }}">
+                                        <img height="111" width="148" src="{% get_media_prefix %}{{ offer.offered_by.brand_logo }}" alt="">
                                     </a>
                                 </div>
                             </div>
                             <div class="row my-4 justify-content-center">
                                 <div class="coll-md-auto text-center">
-                                    <h4>{{ offer.offer_title }}</h4>
+                                    <h5>{{ offer.offer_title }}</h5>
                                 </div>
                             </div>
                             <div class="row my-4 justify-content-center">

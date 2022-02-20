@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.utils.text import slugify
 from django.db import models
+from django.urls import reverse
 
 
 def rename_country_logos(instance, filename):
@@ -8,7 +9,7 @@ def rename_country_logos(instance, filename):
 	if instance.pk:
 		return "images/country_flags/{}.{}".format(slugify(instance.pk), extension)
 	else:
-		return "images/country_flags/{}.{}".format(slugify(instance.country_name), extension)
+		return "images/country_flags/{}.{}".format(instance.country_slug, extension)
 
 
 def rename_brand_logo(instance, filename):
@@ -16,18 +17,26 @@ def rename_brand_logo(instance, filename):
 	if instance.pk:
 		return "images/brand_logos/{}.{}".format(slugify(instance.pk), extension)
 	else:
-		return "images/brand_logos/{}.{}".format(slugify(instance.brand_name), extension)
+		return "images/brand_logos/{}.{}".format(instance.brand_slug, extension)
 
 
 class Country(models.Model):
 	country_name = models.CharField(max_length=20, unique=True, verbose_name="Name")
+	country_slug = models.SlugField(editable=False)
 	country_logo = models.FileField(upload_to=rename_country_logos, verbose_name="Logo")
 	
 	class Meta:
 		verbose_name = 'Country'
 		verbose_name_plural = 'Countries'
 		ordering = ['country_name']
-	
+		
+	def save(self, *args, **kwargs):
+		self.country_slug = slugify(self.country_name)
+		super(Country, self).save(*args, **kwargs)
+		
+	def get_absolute_url(self):
+		return reverse("Promotion:Country", args=[self.country_slug])
+		
 	def __str__(self):
 		return self.country_name
 
@@ -35,11 +44,16 @@ class Country(models.Model):
 class Brand(models.Model):
 	exists_in = models.ManyToManyField(Country, verbose_name='Countries')
 	brand_name = models.CharField(max_length=20, unique=True, verbose_name="Name")
+	brand_slug = models.SlugField(editable=False)
 	brand_logo = models.FileField(upload_to=rename_brand_logo, verbose_name="Logo")
 	brand_link = models.CharField(max_length=200, verbose_name="URL")
 	
 	class Meta:
 		ordering = ['brand_name']
+		
+	def save(self, *args, **kwargs):
+		self.brand_slug = slugify(self.brand_name)
+		super(Brand, self).save(*args, **kwargs)
 	
 	def __str__(self):
 		return self.brand_name
@@ -82,4 +96,7 @@ class Comment(models.Model):
 	
 	class Meta:
 		ordering = ['-comment_last_updated_on', '-comment_created_on']
+		
+	def __str__(self):
+		return str(self.username) + ", " + str(self.comment_created_on)
 		

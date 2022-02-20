@@ -1,0 +1,4 @@
+#info_column, #available_offers_column{
+    height: 100vh;
+    overflow-y: scroll;
+}

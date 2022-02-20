@@ -1,10 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{%  extends "base_footer.html" %}
+{% load static %}
+{% block Stylesheet %}
+    <link href="{% static 'promotion/css/brand_page.css' %}" rel="stylesheet">
+{% endblock %}
+{% block Title %}
+    {{ target_brand }} Offers: {{ target_country }}
+{% endblock %}
+{% block Content %}
+    {% include "navbar_header.html" %}
+    <div class="container-fluid bg-light">
+        <div class="container bg-light">
+            <div class="row">
+                <div class="col-md-4 bg-white">
+                    <img height="111" width="148" src="{% get_media_prefix %}{{ target_brand.brand_logo }}">
+                </div>
+                <div class="col-md-8 bg-white align-self-center">
+                    <h4 class=" text-uppercase">{{ target_brand.brand_name }} DISCOUNT & VOUCHER CODES &diams; {{current_month_year}}</h4>
+                    <h6>Find the latest {{ target_brand.brand_name }} discount codes and coupon codes here. Buy for less!</h6>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" id="info_column">
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <h5>{{ target_brand.brand_name }} Offer Stats</h5>
+                            <p>used today.</p>
+                            <p>offers available.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <h5>More About {{ target_brand.brand_name }} Offers</h5>
+                            <p><b>How long do {{ target_brand.brand_name }} coupons last?</b></p>
+                            <p>
+                                The {{ target_brand.brand_name }} promo codes currently available end when {{ target_brand.brand_name }} set the coupon expiration date. However, some {{ target_brand.brand_name }} deals don't have a definite end date, so it's possible the promo code will be active until {{ target_brand.brand_name }} runs out of inventory for the promotional item.
+                            </p>
+                            <p><b>How to save money at {{ target_brand.brand_name }}?</b></p>
+                            <p>
+                                You can save money at {{ target_brand.brand_name }} by using one of the current {{ target_brand.brand_name }} coupons from Slickdeals. Right now, the most you can save is 80% off.
+                            </p>
+                            <p><b>How many {{ target_brand.brand_name }} online coupons are available?</b></p>
+                            <p>
+                                There are currently 38 {{ target_brand.brand_name }} online coupons reported by Chewy. These deal offers are available online, including 17 coupon codes. Today alone, users have collectively cashed in on 6450 offers.
+                            </p>
+                            <p><b>How do I use {{ target_brand.brand_name }} coupons?</b></p>
+                            <p>
+                                To use a {{ target_brand.brand_name }} coupon, copy the related promo code to your clipboard and apply it while checking out. Some {{ target_brand.brand_name }} coupons only apply to specific products, so make sure all the items in your cart qualify before submitting your order. If there's a brick-and-mortar store in your area, you may be able to use a printable coupon there as well.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <h5>Comments</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8" id="available_offers_column">
+                    {% for offer in available_offers %}
+                        <div class="row p-2 my-4 bg-white rounded-3 align-items-center justify-content-center" id="coupon_info">
+                            <div class="col-lg-2 align-self-center">
+                                <div class="row px-2 pt-2">
+                                    {% if offer.offer_type == "CODE" %}
+                                        <div class="col-lg py-5 border border-danger rounded-top align-self-center">
+                                            <h3 class="text-center text-danger"><b>{{ offer.offer_amount }}%</b></h3>
+                                        </div>
+                                    {% endif %}
+                                    {% if offer.offer_type == "DEAL" %}
+                                        <div class="col-lg py-5 border border-warning rounded-top align-self-center">
+                                            <h3 class="text-center text-warning"><b>{{ offer.offer_amount}}%</b></h3>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                <div class="row px-2 pb-2 align-items-center">
+                                    {% if offer.offer_type == "CODE" %}
+                                        <div class="col-lg border border-danger bg-danger rounded-bottom align-self-center">
+                                            <p class="text-center text-light"><b>{{ offer.offer_type }}</b></p>
+                                        </div>
+                                    {% endif %}
+                                    {% if offer.offer_type == "DEAL" %}
+                                        <div class="col-lg border border-warning bg-warning rounded-bottom align-self-center">
+                                            <p class="text-center text-light"><b>{{ offer.offer_type }}</b></p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-lg-6 align-self-center">
+                                <div class="row p-2 align-items-center justify-content-center">
+                                    <div class="col-lg">
+                                        <p class="text-center"><b>{{ offer.offer_title }}</b></p>
+                                        <p class="text-center">{{ offer.offer_details }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 align-self-center text-center">
+                                {% if offer.offer_type == "CODE" %}
+                                    <a class="btn btn-danger btn-outline-light rounded-pill" coupon_no="{{ forloop.counter0 }}" c_percentage="{{ offer.offer_amount }}" c_type="{{ offer.offer_type }}" c_title="{{ offer.offer_title }}" c_details="{{ offer.offer_details }}" c_code="{{ offer.offer_code}}" c_link="{{ target_brand.brand_link }}" onclick="redirect_hidden({{ forloop.counter0 }})" href="#" role="button" id="button_code" data-bs-toggle="modal" data-bs-target="#code_modal"><b>&nbsp;&nbsp;REVEAL THE CODE&nbsp;&nbsp;</b></a>
+                                {%  endif %}
+                                {% if offer.offer_type == "DEAL" %}
+                                    <a class="btn btn-warning btn-outline-light rounded-pill" coupon_no="{{ forloop.counter0 }}" c_percentage="{{ offer.offer_amount }}" c_type="{{ offer.offer_type }}" c_title="{{ offer.offer_title }}" c_details="{{ offer.offer_details}}" c_code="You do not need any code for this offer!" c_link="{{ target_brand.brand_link }}" onclick="redirect({{ forloop.counter0 }})" href="#" role="button" id="button_deal" data-bs-toggle="modal" data-bs-target="#code_modal"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GET THE DEAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
+                                {%  endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
