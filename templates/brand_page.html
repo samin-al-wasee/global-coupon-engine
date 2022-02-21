@@ -1,35 +1,61 @@
 {%  extends "base_footer.html" %}
 {% load static %}
+
 {% block Stylesheet %}
     <link href="{% static 'promotion/css/brand_page.css' %}" rel="stylesheet">
 {% endblock %}
+
 {% block Title %}
     {{ target_brand }} Offers: {{ target_country }}
 {% endblock %}
+
 {% block Content %}
     {% include "navbar_header.html" %}
-    <div class="container-fluid bg-light">
-        <div class="container bg-light">
-            <div class="row">
-                <div class="col-md-4 bg-white">
-                    <img height="111" width="148" src="{% get_media_prefix %}{{ target_brand.brand_logo }}">
+
+     <div class="row border">
+        <div class="collapse bg-white rounded" id="search_brands">
+            <div class="p-2" id="result_brands">
+                {% for brand in target_country_brands %}
+                    <div class="row m-2 brand_as_search_result" brand_name="{{ brand.brand_name }}">
+                        <div class="col-auto align-self-center">
+                            <a href="{{ target_country.get_absolute_url }}{{ brand.brand_slug }}">
+                                <img class="img-fluid rounded" height="36" width="48" src="{% get_media_prefix %}{{ brand.brand_logo }}" alt="">
+                            </a>
+                        </div>
+                        <div class="col-auto align-self-center">
+                            <a href="{{ target_country.get_absolute_url }}{{ brand.brand_slug }}" class="link-dark text-decoration-none">
+                                {{ brand.brand_name }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-4 bg-light">
+        <div class="container p-4 bg-light">
+            <div class="row px-4">
+                <div class="col-md-3 bg-white text-center">
+                    <img height="111" width="148" src="{% get_media_prefix %}{{ target_brand.brand_logo }}" alt="">
                 </div>
-                <div class="col-md-8 bg-white align-self-center">
+                <div class="col-md-1"></div>
+                <div class="col-md-8 bg-gradient align-self-center">
                     <h4 class=" text-uppercase">{{ target_brand.brand_name }} DISCOUNT & VOUCHER CODES &diams; {{current_month_year}}</h4>
                     <h6>Find the latest {{ target_brand.brand_name }} discount codes and coupon codes here. Buy for less!</h6>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4" id="info_column">
-                    <div class="row">
-                        <div class="col-md-auto">
+            <div class="row p-2">
+                <div class="col-md-3" id="info_column">
+                    <div class="row p-4">
+                        <div class="col-md-auto p-4">
                             <h5>{{ target_brand.brand_name }} Offer Stats</h5>
                             <p>used today.</p>
                             <p>offers available.</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-auto">
+                    <div class="row p-4">
+                        <div class="col-md-auto p-4">
                             <h5>More About {{ target_brand.brand_name }} Offers</h5>
                             <p><b>How long do {{ target_brand.brand_name }} coupons last?</b></p>
                             <p>
@@ -49,13 +75,38 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-auto">
+                    <div class="row p-4">
+                        <div class="col-md-auto p-4">
                             <h5>Comments</h5>
+                            {% for comment in comments %}
+                                <div class="row p-4">
+                                    <div class="col-md-auto p-4">
+                                        <div class="row p-4">
+                                            <div class="col-md-auto p-4">
+                                                <img height="32" width="32" src="{% static 'promotion/images/user_profile_pic.png' %}" alt="">
+                                            </div>
+                                            <div class="col-md-auto p-4">
+                                                <p><b>{{ comment.username }}</b></p>
+                                            </div>
+                                        </div>
+                                        <div class="row p-4">
+                                            <div class="col-md-auto p-4">
+                                                <p>{{ comment.comment_created_on }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row p-4">
+                                            <div class="col-md-auto p-4">
+                                                <p>{{ comment.comment }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8" id="available_offers_column">
+                <div class="col-md-1"></div>
+                <div class="col-md-8 ml-2" id="available_offers_column">
                     {% for offer in available_offers %}
                         <div class="row p-2 my-4 bg-white rounded-3 align-items-center justify-content-center" id="coupon_info">
                             <div class="col-lg-2 align-self-center">
@@ -102,6 +153,63 @@
                             </div>
                         </div>
                     {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="code_modal" tabindex="-1" aria-labelledby="code_modal_label" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title" id="code_modal_label"><b>Congratulations!</b></p>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md">
+                                    <div class="row">
+                                        <div id="popup_percentage_back">
+                                            <h1><b id="popup_percentage_target"></b></h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div id="popup_type_back">
+                                            <p class="text-center text-light"><b id="popup_type_target"></b></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="row">
+                                <div class="col-md rounded-3">
+                                    <p class="text-center"><b id="popup_title_target"></b></p>
+                                    <p class="text-center" id="popup_details_target"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="row px-6 border">
+                                <div class="col-md py-3 border-dark rounded-3">
+                                    <h3 class="text-center">
+                                        <b id="popup_code_target"></b>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md self-align-center text-center">
+                            <a href="https://cutt.ly/3OXxdN9" type="button" class="btn btn-success btn-outline-light rounded-pill" id="popup_button">Go To DARAZ Website</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

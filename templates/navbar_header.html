@@ -1,15 +1,12 @@
 {% load static %}
+
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-        <a class="navbar-brand px-4" href="#"><img height="48" width="96" src="{% static 'promotion/vectors/company_logo_dark_text.svg' %}"></a>
+        <a class="navbar-brand px-4" href="#"><img height="48" width="96" src="{% static 'promotion/vectors/company_logo_dark_text.svg' %}" alt=""></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex">
-                <input class="form-control me-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
-{#                <button class="btn btn-success rounded-pill" type="submit">Search</button>#}
-            </form>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Top Deals</a>
@@ -28,6 +25,9 @@
                     </ul>
                 </li>
             </ul>
+            <form class="d-flex">
+                <input class="form-control me-2 rounded-pill" id="brand_search" type="search" placeholder="Search for brands..." aria-label="Search" data-bs-toggle="collapse" data-bs-target="#search_brands" aria-expanded="false" aria-controls="search_brands" onkeyup="live_search_brands()">
+            </form>
         </div>
     </div>
 </nav>

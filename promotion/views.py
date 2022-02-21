@@ -19,10 +19,11 @@ def country_page(request, target_country_slug):
 
 def brand_page(request, target_country_slug, target_brand_slug):
 	target_country = Country.objects.get(country_slug=target_country_slug)
+	target_country_brands = Brand.objects.filter(exists_in=target_country)
 	target_brand = Brand.objects.get(brand_slug=target_brand_slug)
 	available_offers = Offer.objects.filter(offer_expires_on__gte=date.today(), offered_by=target_brand, offered_in=target_country)
 	expired_offers = Offer.objects.filter(offer_expires_on__lte=date.today())
 	comments = Comment.objects.all()
 	current_month_year = date.today().strftime("%B") + ", " + date.today().strftime("%Y")
-	context = {"target_country": target_country, "target_brand": target_brand, "available_offers": available_offers, "expired_offers": expired_offers, "comments": comments, "current_month_year": current_month_year}
+	context = {"target_country": target_country, "target_country_brands": target_country_brands, "target_brand": target_brand, "available_offers": available_offers, "expired_offers": expired_offers, "comments": comments, "current_month_year": current_month_year}
 	return render(request, "brand_page.html", context)

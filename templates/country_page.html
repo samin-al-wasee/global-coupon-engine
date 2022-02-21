@@ -1,13 +1,38 @@
 {% extends "base_footer.html" %}
 {% load static %}
+
 {% block Stylesheet %}
     <link href="{% static 'promotion/css/country_page.css' %}" rel="stylesheet">
 {% endblock %}
+
 {% block Title %}
     Offers: {{ target_country }}
 {% endblock %}
+
 {% block Content %}
     {% include "navbar_header.html" %}
+
+    <div class="row border">
+        <div class="collapse bg-white rounded" id="search_brands">
+            <div class="p-2" id="result_brands">
+                {% for brand in brands %}
+                    <div class="row m-2 brand_as_search_result" brand_name="{{ brand.brand_name }}">
+                        <div class="col-auto align-self-center">
+                            <a href="{{ brand.brand_slug }}">
+                                <img class="img-fluid rounded" height="36" width="48" src="{% get_media_prefix %}{{ brand.brand_logo }}" alt="">
+                            </a>
+                        </div>
+                        <div class="col-auto align-self-center">
+                            <a href="{{ brand.brand_slug }} " class="link-dark text-decoration-none">
+                                {{ brand.brand_name }}
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid p-4 text-light" id="country_page_sub_header">
         <div class="row px-4 pt-4 justify-content-center">
             <div class="col-md-auto">
@@ -24,6 +49,7 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid p-4 bg-light">
         <div class="container p-4">
             <div class="row px-2">
@@ -48,6 +74,7 @@
             </div>
         </div>
     </div>
+
     <div class="container-fluid p-4 bg-light">
         <div class="container px-2 pb-2 bg-light">
             <div class="row px-2">
@@ -84,5 +111,6 @@
             </div>
         </div>
     </div>
+
     {% include "how_does_picodi_work.html" %}
 {% endblock %}

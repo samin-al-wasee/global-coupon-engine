@@ -2,6 +2,7 @@ from datetime import datetime
 from django.utils.text import slugify
 from django.db import models
 from django.urls import reverse
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 def rename_country_logos(instance, filename):
@@ -64,12 +65,16 @@ class Offer(models.Model):
 		("CODE", "Code"),
 		("DEAL", "Deal"),
 	]
+	validators_offer_amount = [
+		MinValueValidator(0),
+		MaxValueValidator(100),
+	]
 	offer_title = models.CharField(max_length=20, verbose_name="Title")
 	offer_details = models.TextField(max_length=200, verbose_name='Description')
 	offered_by = models.ForeignKey(Brand, on_delete=models.CASCADE, verbose_name='Brand')
 	offered_in = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name='Country')
 	offer_type = models.CharField(max_length=4, choices=choices_offer_type, verbose_name="Type")
-	offer_amount = models.FloatField(verbose_name='Amount')
+	offer_amount = models.IntegerField(validators=validators_offer_amount, verbose_name='Amount')
 	offer_code = models.CharField(max_length=30, verbose_name="Code", help_text="Leave this field empty for deals.", default="You don't need any code!")
 	offer_expires_on = models.DateField(verbose_name='Expires On')
 	offer_next_available_on = models.DateField(verbose_name='Next Available On')

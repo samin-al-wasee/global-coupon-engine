@@ -1,6 +1,8 @@
 #homepage_header{
     background-image: url("../images/homepage_header_background.webp");
 }
-.test{
-    background-color: #0a47a9;
+#result_countries{
+    max-height: 40vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
