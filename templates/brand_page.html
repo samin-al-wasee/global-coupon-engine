@@ -12,51 +12,63 @@
 {% block Content %}
     {% include "navbar_header.html" %}
 
-     <div class="row border">
-        <div class="collapse bg-white rounded" id="search_brands">
-            <div class="p-2" id="result_brands">
-                {% for brand in target_country_brands %}
-                    <div class="row m-2 brand_as_search_result" brand_name="{{ brand.brand_name }}">
-                        <div class="col-auto align-self-center">
-                            <a href="{{ target_country.get_absolute_url }}{{ brand.brand_slug }}">
-                                <img class="img-fluid rounded" height="36" width="48" src="{% get_media_prefix %}{{ brand.brand_logo }}" alt="">
-                            </a>
+     <div class="container-fluid">
+        <div class="row border">
+            <div class="collapse bg-white rounded" id="search_brands">
+                <div class="p-2" id="result_brands">
+                    {% for brand in target_country_brands %}
+                        <div class="row m-2 brand_as_search_result" brand_name="{{ brand.brand_name }}">
+                            <div class="col-auto align-self-center">
+                                <a href="{{ target_country.get_absolute_url }}{{ brand.brand_slug }}">
+                                    <img class="img-fluid rounded" height="36" width="48" src="{% get_media_prefix %}{{ brand.brand_logo }}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-auto align-self-center">
+                                <a href="{{ target_country.get_absolute_url }}{{ brand.brand_slug }}" class="link-dark text-decoration-none">
+                                    {{ brand.brand_name }}
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-auto align-self-center">
-                            <a href="{{ target_country.get_absolute_url }}{{ brand.brand_slug }}" class="link-dark text-decoration-none">
-                                {{ brand.brand_name }}
-                            </a>
-                        </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
+     </div>
 
     <div class="container-fluid p-4 bg-light">
         <div class="container p-4 bg-light">
-            <div class="row px-4">
-                <div class="col-md-3 bg-white text-center">
-                    <img height="111" width="148" src="{% get_media_prefix %}{{ target_brand.brand_logo }}" alt="">
+            <div class="row">
+                <div class="col-lg-3 text-center">
+{#                    <img height="111" width="148" src="{% get_media_prefix %}{{ target_brand.brand_logo }}" alt="">#}
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-8 bg-gradient align-self-center">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-8 bg-gradient align-self-center">
                     <h4 class=" text-uppercase">{{ target_brand.brand_name }} DISCOUNT & VOUCHER CODES &diams; {{current_month_year}}</h4>
                     <h6>Find the latest {{ target_brand.brand_name }} discount codes and coupon codes here. Buy for less!</h6>
                 </div>
             </div>
-            <div class="row p-2">
-                <div class="col-md-3" id="info_column">
-                    <div class="row p-4">
-                        <div class="col-md-auto p-4">
-                            <h5>{{ target_brand.brand_name }} Offer Stats</h5>
+
+            <div class="row p-2 flex-column-reverse flex-lg-row border-bottom">
+                <div class="col-lg-3 mt-2 border-top" id="info_column"> {# Offer and Brand Info #}
+                    <div class="row mt-2 mb-4">
+                        <div class="col-lg-auto border rounded-3">
+                            <div class="row bg-white border-bottom justify-content-center">
+                                <div class="col-md-auto py-2 bg-white text-center">
+                                    <img height="111" width="148" src="{% get_media_prefix %}{{ target_brand.brand_logo }}" alt="">
+                                    <h5>{{ target_brand.brand_name }} Offer Stats</h5>
+                                </div>
+                            </div>
                             <p>used today.</p>
                             <p>offers available.</p>
                         </div>
                     </div>
-                    <div class="row p-4">
-                        <div class="col-md-auto p-4">
-                            <h5>More About {{ target_brand.brand_name }} Offers</h5>
+                    <div class="row my-2 justify-content-center">
+                        <div class="col-md-auto border rounded-3">
+                            <div class="row bg-white">
+                                <div class="col-md-auto py-2 border-bottom bg-white">
+                                    <h5>More About {{ target_brand.brand_name }} Offers</h5>
+                                </div>
+                            </div>
                             <p><b>How long do {{ target_brand.brand_name }} coupons last?</b></p>
                             <p>
                                 The {{ target_brand.brand_name }} promo codes currently available end when {{ target_brand.brand_name }} set the coupon expiration date. However, some {{ target_brand.brand_name }} deals don't have a definite end date, so it's possible the promo code will be active until {{ target_brand.brand_name }} runs out of inventory for the promotional item.
@@ -75,27 +87,31 @@
                             </p>
                         </div>
                     </div>
-                    <div class="row p-4">
-                        <div class="col-md-auto p-4">
-                            <h5>Comments</h5>
+                    <div class="row justify-content-center">
+                        <div class="col-md-auto border rounded-3">
+                            <div class="row mb-2 bg-white border-bottom">
+                                <div class="col-md-auto py-2 rounded bg-white">
+                                    <h5>Community Comments</h5>
+                                </div>
+                            </div>
                             {% for comment in comments %}
-                                <div class="row p-4">
-                                    <div class="col-md-auto p-4">
-                                        <div class="row p-4">
-                                            <div class="col-md-auto p-4">
+                                <div class="row mb-2 border-bottom">
+                                    <div class="col-md-auto">
+                                        <div class="row">
+                                            <div class="col-md-auto">
                                                 <img height="32" width="32" src="{% static 'promotion/images/user_profile_pic.png' %}" alt="">
                                             </div>
-                                            <div class="col-md-auto p-4">
+                                            <div class="col-md-auto">
                                                 <p><b>{{ comment.username }}</b></p>
                                             </div>
                                         </div>
-                                        <div class="row p-4">
-                                            <div class="col-md-auto p-4">
-                                                <p>{{ comment.comment_created_on }}</p>
+                                        <div class="row">
+                                            <div class="col-md-auto">
+                                                <p class="text-muted">{{ comment.comment_created_on }}</p>
                                             </div>
                                         </div>
-                                        <div class="row p-4">
-                                            <div class="col-md-auto p-4">
+                                        <div class="row">
+                                            <div class="col-md-auto">
                                                 <p>{{ comment.comment }}</p>
                                             </div>
                                         </div>
@@ -105,8 +121,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-1"></div>
-                <div class="col-md-8 ml-2" id="available_offers_column">
+
+                <div class="col-lg-1"></div>
+
+                <div class="col-lg-8 mt-2 border-top" id="available_offers_column">
                     {% for offer in available_offers %}
                         <div class="row p-2 my-4 bg-white rounded-3 align-items-center justify-content-center" id="coupon_info">
                             <div class="col-lg-2 align-self-center">
