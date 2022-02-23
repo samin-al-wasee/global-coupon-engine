@@ -163,11 +163,31 @@
                             </div>
                             <div class="col-md-4 align-self-center text-center">
                                 {% if offer.offer_type == "CODE" %}
-                                    <a class="btn btn-danger btn-outline-light rounded-pill" coupon_no="{{ forloop.counter0 }}" c_percentage="{{ offer.offer_amount }}" c_type="{{ offer.offer_type }}" c_title="{{ offer.offer_title }}" c_details="{{ offer.offer_details }}" c_code="{{ offer.offer_code}}" c_link="{{ target_brand.brand_link }}" onclick="redirect_hidden({{ forloop.counter0 }})" href="#" role="button" id="button_code" data-bs-toggle="modal" data-bs-target="#code_modal"><b>&nbsp;&nbsp;REVEAL THE CODE&nbsp;&nbsp;</b></a>
+                                    <a class="btn btn-danger btn-outline-light px-4 rounded-pill text-nowrap" coupon_no="{{ forloop.counter0 }}" c_percentage="{{ offer.offer_amount }}" c_type="{{ offer.offer_type }}" c_title="{{ offer.offer_title }}" c_details="{{ offer.offer_details }}" c_code="{{ offer.offer_code}}" c_link="{{ target_brand.brand_link }}" onclick="redirect_hidden({{ forloop.counter0 }})" href="#" role="button" id="button_code" data-bs-toggle="modal" data-bs-target="#code_modal"><b>REVEAL THE CODE</b></a>
                                 {%  endif %}
                                 {% if offer.offer_type == "DEAL" %}
-                                    <a class="btn btn-warning btn-outline-light rounded-pill" coupon_no="{{ forloop.counter0 }}" c_percentage="{{ offer.offer_amount }}" c_type="{{ offer.offer_type }}" c_title="{{ offer.offer_title }}" c_details="{{ offer.offer_details}}" c_code="You do not need any code for this offer!" c_link="{{ target_brand.brand_link }}" onclick="redirect({{ forloop.counter0 }})" href="#" role="button" id="button_deal" data-bs-toggle="modal" data-bs-target="#code_modal"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;GET THE DEAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
+                                    <a class="btn btn-warning btn-outline-light px-5 rounded-pill text-nowrap" coupon_no="{{ forloop.counter0 }}" c_percentage="{{ offer.offer_amount }}" c_type="{{ offer.offer_type }}" c_title="{{ offer.offer_title }}" c_details="{{ offer.offer_details}}" c_code="You do not need any code for this offer!" c_link="{{ target_brand.brand_link }}" onclick="redirect({{ forloop.counter0 }})" href="#" role="button" id="button_deal" data-bs-toggle="modal" data-bs-target="#code_modal"><b>GET THE DEAL</b></a>
                                 {%  endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid p-2">
+        <div class="container p-2">
+            <button type="button" class="btn btn-lg border w-100" data-bs-toggle="collapse" data-bs-target="#missed_offers" aria-expanded="false" aria-controls="missed_offers">Offers that you have missed!</button>
+            <div class="collapse bg-white rounded" id="missed_offers">
+                <div class="container bg-light p-2" id="missed_offers_container">
+                    {% for offer in expired_offers %}
+                        <div class="row bg-white m-2">
+                            <div class="col-auto align-self-center">
+                                <h6>Archived Offer: {{ offer.offer_title }}</h6>
+                                <p>{{ offer.offer_details }}</p>
+                                <p class="text-muted"><i>Expired on: </i>{{ offer.offer_expires_on }}</p>
+                                <p class="text-muted"><i>Next available on: </i>{{ offer.offer_next_available_on }}</p>
                             </div>
                         </div>
                     {% endfor %}
