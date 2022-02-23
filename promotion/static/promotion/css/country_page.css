@@ -6,4 +6,9 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+@media (max-width: 576px){
+    #brands_section{
+        overflow-x: scroll;
+    }
+}
 

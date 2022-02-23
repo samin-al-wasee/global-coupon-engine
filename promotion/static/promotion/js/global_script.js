@@ -1,3 +1,15 @@
+window.onload = change_class;
+window.onresize = change_class;
+
+function change_class(){
+    const brand_section = document.getElementById("brands_section");
+    if (window.screen.width < 576){
+        brand_section.className = "d-flex flex-row p-2";
+    }else{
+        brand_section.className = "row p-2"
+    }
+}
+
 function live_search_country(){
     const current_search_string = document.getElementById("country_search").value.toLowerCase();
     const countries = document.getElementsByClassName("country_as_search_result");
@@ -61,7 +73,6 @@ function redirect_hidden(id){
 function set_href_brand_name(target_brand_name, target_brand_url){
     const target_button = document.getElementById("popup_button");
     target_button.setAttribute("href", target_brand_url);
-    console.log(target_button.href);
     target_button.innerHTML += " ";
     target_button.innerHTML += target_brand_name;
 }
