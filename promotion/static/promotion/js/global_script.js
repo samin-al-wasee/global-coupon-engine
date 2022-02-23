@@ -57,3 +57,11 @@ function redirect_hidden(id){
     const redirect = set_value(pressed_button, "col-md py-md-5 border border-danger rounded-top align-self-center", "text-center text-danger", "col-md border border-danger bg-danger rounded-bottom align-self-center");
     redirect.onload = redirect.close();
 }
+
+function set_href_brand_name(target_brand_name, target_brand_url){
+    const target_button = document.getElementById("popup_button");
+    target_button.setAttribute("href", target_brand_url);
+    console.log(target_button.href);
+    target_button.innerHTML += " ";
+    target_button.innerHTML += target_brand_name;
+}

@@ -127,7 +127,7 @@
                 <div class="col-lg-8 mt-2 border-top" id="available_offers_column">
                     {% for offer in available_offers %}
                         <div class="row p-2 my-4 bg-white rounded-3 align-items-center justify-content-center" id="coupon_info">
-                            <div class="col-lg-2 align-self-center">
+                            <div class="col-md-2 align-self-center">
                                 <div class="row px-2 pt-2">
                                     {% if offer.offer_type == "CODE" %}
                                         <div class="col-lg py-5 border border-danger rounded-top align-self-center">
@@ -153,7 +153,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="col-lg-6 align-self-center">
+                            <div class="col-md-6 align-self-center">
                                 <div class="row p-2 align-items-center justify-content-center">
                                     <div class="col-lg">
                                         <p class="text-center"><b>{{ offer.offer_title }}</b></p>
@@ -161,7 +161,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 align-self-center text-center">
+                            <div class="col-md-4 align-self-center text-center">
                                 {% if offer.offer_type == "CODE" %}
                                     <a class="btn btn-danger btn-outline-light rounded-pill" coupon_no="{{ forloop.counter0 }}" c_percentage="{{ offer.offer_amount }}" c_type="{{ offer.offer_type }}" c_title="{{ offer.offer_title }}" c_details="{{ offer.offer_details }}" c_code="{{ offer.offer_code}}" c_link="{{ target_brand.brand_link }}" onclick="redirect_hidden({{ forloop.counter0 }})" href="#" role="button" id="button_code" data-bs-toggle="modal" data-bs-target="#code_modal"><b>&nbsp;&nbsp;REVEAL THE CODE&nbsp;&nbsp;</b></a>
                                 {%  endif %}
@@ -178,13 +178,13 @@
 
     <div class="modal fade" id="code_modal" tabindex="-1" aria-labelledby="code_modal_label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p class="modal-title" id="code_modal_label"><b>Congratulations!</b></p>
+            <div class="modal-content p-4">
+                <div class="modal-header border">
+                    <h5 class="modal-title" id="code_modal_label">Congratulations!</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row">
+                    <div class="row mb-2">
                         <div class="col-md-3">
                             <div class="row">
                                 <div class="col-md">
@@ -210,7 +210,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mt-2">
                         <div class="col-md">
                             <div class="row px-6 border">
                                 <div class="col-md py-3 border-dark rounded-3">
@@ -225,7 +225,7 @@
                 <div class="modal-footer justify-content-center">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md self-align-center text-center">
-                            <a href="https://cutt.ly/3OXxdN9" type="button" class="btn btn-success btn-outline-light rounded-pill" id="popup_button">Go To DARAZ Website</a>
+                            <a href="{{ target_brand.brand_link }}" type="button" class="btn btn-lg btn-success btn-outline-light rounded-pill" id="popup_button">Take me to {{ target_brand.brand_name }}</a>
                         </div>
                     </div>
                 </div>
