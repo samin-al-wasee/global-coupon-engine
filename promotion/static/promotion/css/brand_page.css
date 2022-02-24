@@ -8,8 +8,8 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
-#missed_offer_container{
-    max-height: 40vh;
+#missed_offers_container{
+    max-height: 30vh;
     overflow-y: scroll;
     overflow-x: hidden;
 }

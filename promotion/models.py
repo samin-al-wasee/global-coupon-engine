@@ -69,8 +69,8 @@ class Offer(models.Model):
 		MinValueValidator(0),
 		MaxValueValidator(100),
 	]
-	offer_title = models.CharField(max_length=20, verbose_name="Title")
-	offer_details = models.TextField(max_length=200, verbose_name='Description')
+	offer_title = models.CharField(max_length=50, verbose_name="Title")
+	offer_details = models.TextField(max_length=300, verbose_name='Description')
 	offered_by = models.ForeignKey(Brand, on_delete=models.CASCADE, verbose_name='Brand')
 	offered_in = models.ForeignKey(Country, on_delete=models.CASCADE, verbose_name='Country')
 	offer_type = models.CharField(max_length=4, choices=choices_offer_type, verbose_name="Type")

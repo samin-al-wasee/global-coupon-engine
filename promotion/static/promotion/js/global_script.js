@@ -3,10 +3,29 @@ window.onresize = change_class;
 
 function change_class(){
     const brand_section = document.getElementById("brands_section");
-    if (window.screen.width < 576){
-        brand_section.className = "d-flex flex-row p-2";
-    }else{
-        brand_section.className = "row p-2"
+    const offer_image_column = document.getElementsByClassName("offer_image_column")
+    const offer_details_column = document.getElementsByClassName("offer_details_column")
+    const fix_image = "col-md-4 align-self-center offer_image_column";
+    const unfix_image = "col-md-2 align-self-center offer_image_column";
+    const fix_details = "col-md-8 align-self-center offer_details_column";
+    const unfix_details = "col-md-6 align-self-center offer_details_column";
+    if(document.title.includes("Funscrimp:")){
+        if (window.screen.width < 576){
+            brand_section.className = "d-flex flex-row p-2";
+        }else{
+            brand_section.className = "row p-2"
+        }
+    }
+    if(document.title.includes("Offers:")){
+        for(let i = 0; i < offer_image_column.length; i++){
+            if(window.screen.width < 1200 && window.screen.width > 767){
+                offer_image_column[i].className = fix_image;
+                offer_details_column[i].className = fix_details;
+            }else{
+                offer_image_column[i].className = unfix_image;
+                offer_details_column[i].className = unfix_details;
+            }
+        }
     }
 }
 
