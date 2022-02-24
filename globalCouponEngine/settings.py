@@ -11,9 +11,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e$xp19-dtikolv=l+7zm8(!7^s#x*mk^n2#zwix)=o168rf*b_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["funscrimp.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
