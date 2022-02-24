@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-e$xp19-dtikolv=l+7zm8(!7^s#x*mk^n2#zwix)=o168rf*b_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["funscrimp.com"]
 
 
 # Application definition
