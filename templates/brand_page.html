@@ -3,6 +3,7 @@
 
 {% block Stylesheet %}
     <link href="{% static 'promotion/css/brand_page.css' %}" rel="stylesheet">
+    <link href="{% get_media_prefix %}{{ target_brand.brand_logo }}" rel="icon">
 {% endblock %}
 
 {% block Title %}
@@ -20,7 +21,7 @@
                         <div class="row m-2 brand_as_search_result" brand_name="{{ brand.brand_name }}">
                             <div class="col-auto align-self-center">
                                 <a href="{{ target_country.get_absolute_url }}{{ brand.brand_slug }}">
-                                    <img class="img-fluid rounded" height="36" width="48" src="{% get_media_prefix %}{{ brand.brand_logo }}" alt="">
+                                    <img class="img-fluid rounded" height="36" width="48" src="{% get_media_prefix %}{{ brand.brand_logo }}" alt="Funscrimp_brand_logo">
                                 </a>
                             </div>
                             <div class="col-auto align-self-center">
@@ -54,7 +55,7 @@
                         <div class="col-lg-auto border rounded-3 w-100">
                             <div class="row bg-white border-bottom justify-content-center">
                                 <div class="col-md-auto py-2 bg-white text-center">
-                                    <img height="111" width="148" src="{% get_media_prefix %}{{ target_brand.brand_logo }}" alt="">
+                                    <img height="111" width="148" src="{% get_media_prefix %}{{ target_brand.brand_logo }}" alt="Funscrimp_brand_logo">
                                     <h5>{{ target_brand.brand_name }} Offer Stats</h5>
                                 </div>
                             </div>
@@ -99,7 +100,7 @@
                                     <div class="col-md-auto">
                                         <div class="row">
                                             <div class="col-md-auto">
-                                                <img height="32" width="32" src="{% static 'promotion/images/user_profile_pic.png' %}" alt="">
+                                                <img height="32" width="32" src="{% static 'promotion/images/user_profile_pic.png' %}" alt="Funscrimp_user_dp">
                                             </div>
                                             <div class="col-md-auto">
                                                 <p><b>{{ comment.username }}</b></p>

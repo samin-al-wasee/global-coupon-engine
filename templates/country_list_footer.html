@@ -5,7 +5,7 @@
         <div class="row mx-2 mb-2 p-4">
             {% for country in countries %}
                 <div class="col-md-2 p-2 hstack">
-                    <img height="24" width="32" class="img-fluid rounded" src="{% get_media_prefix %}{{ country.country_logo }}" alt="">
+                    <img height="24" width="32" class="img-fluid border rounded" src="{% get_media_prefix %}{{ country.country_logo }}" alt="Funscrimp_country_flag">
                     <a href="{{ country.get_absolute_url }}" class="link-dark m-2 text-decoration-none">{{ country.country_name }}</a>
                 </div>
             {% endfor %}
