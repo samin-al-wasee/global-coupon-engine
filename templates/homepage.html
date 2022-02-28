@@ -19,7 +19,7 @@
         </div>
         <div class="row mx-2 p-4 justify-content-center">
             <div class="col-md text-center">
-                <h1><b>Get all the fun of online deals in one place!</b></h1>
+                <h1 class="text-dark"><b>Get all the fun of online deals in one place!</b></h1>
             </div>
         </div>
 {#        <div class="row mx-2 p-4 justify-content-center">#}
@@ -29,11 +29,11 @@
 {#        </div>#}
         <div class="row mx-2 p-4 justify-content-center">
             <div class="col-md-auto mx-0 p-0 text-center">
-                <button class="btn btn-light btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#search_countries" aria-expanded="false" aria-controls="search_countries"><img class="mr-2" height="32" width="32" src="{% static 'promotion/images/globe.png' %}" alt="Funscrimp_search_country"><b class="p-2">&nbsp;&nbsp;Select a country to search for discounts</b></button>
-                <div class="collapse bg-white rounded" id="search_countries">
+                <button class="btn btn-light btn-lg border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#search_countries" aria-expanded="false" aria-controls="search_countries"><img class="mr-2" height="32" width="32" src="{% static 'promotion/images/globe.png' %}" alt="Funscrimp_search_country"><b class="p-2">&nbsp;&nbsp;Select a country to search for discounts</b></button>
+                <div class="collapse bg-white border border-dark rounded" id="search_countries">
                     <form class="d-flex">
                         <label for="country_search"></label>
-                        <input class="form-control form-control-lg my-2" id="country_search" type="search" placeholder="Search..." onkeyup="live_search_country()">
+                        <input class="form-control form-control-lg my-2 border border-dark" id="country_search" type="search" placeholder="Search..." onkeyup="live_search_country()">
                     </form>
                     <div class="p-2" id="result_countries">
                         {% for country in countries %}
@@ -56,10 +56,10 @@
         </div>
         <div class="row mx-2 p-4 justify-content-center">
             <div class="col-md p-4 vstack align-items-center text-center">
-                <img class="img-fluid" height="256" width="256" src="{% static 'promotion/images/save_currency.png' %}" alt="Funscrimp_mascot">
-                <h4>Hey there!</h4>
-                <p>I'm your currency! Save me please!</p>
-                <a href="#lets_explore_funscrimp"><button class="btn btn-outline-light btn-lg m-2">Let's Explore Funscrimp!</button></a>
+                <img class="img-fluid" height="256" width="256" src="{% static 'promotion/vectors/funscrimp_money.svg' %}" alt="Funscrimp_mascot">
+                <h4 class="text-dark">Hey there!</h4>
+                <p class="text-dark">I'm your currency! Save me please!</p>
+                <a href="#lets_explore_funscrimp"><button class="btn btn-outline-dark btn-lg m-2 text-dark" id="explore_funscrimp">Let's Explore Funscrimp!</button></a>
 {#                <a href="#picodi_country_list"><button class="btn btn-outline-light btn-lg m-2">&nbsp;&nbsp;Country&nbsp;&nbsp;List&nbsp;&nbsp;</button></a>#}
             </div>
         </div>
@@ -68,7 +68,7 @@
     <div class="container-fluid" id="lets_explore_funscrimp">
         <div class="row m-2 p-4 align-items-center">
             <div class="col-lg-4 p-4 text-center">
-                <img src="{% static 'promotion/images/homepage_doodle_1.png' %}" class="img-fluid" alt="Funscrimp_doodle">
+                <img src="{% static 'promotion/vectors/funscrimp_money.svg' %}" class="img-fluid" alt="Funscrimp_doodle">
             </div>
             <div class="col-lg-2"></div>
             <div class="col-lg-6 p-4">
@@ -87,7 +87,7 @@
             </div>
             <div class="col-lg-2"></div>
             <div class="col-lg-4 p-4 text-center">
-                <img src="{% static 'promotion/images/homepage_doodle_2.png' %}" class="img-fluid" alt="Funscrimp_doodle">
+                <img src="{% static 'promotion/vectors/funscrimp_money01.svg' %}" class="img-fluid" alt="Funscrimp_doodle">
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@
     <div class="container-fluid">
         <div class="row m-2 p-4 align-items-center">
             <div class="col-lg-4 text-center">
-                <img src="{% static 'promotion/images/homepage_doodle_3.png' %}" class="img-fluid" alt="Funscrimp_doodle">
+                <img src="{% static 'promotion/vectors/funscrimp_money02.svg' %}" class="img-fluid" alt="Funscrimp_doodle">
             </div>
             <div class="col-lg-2"></div>
             <div class="col-lg-6">
@@ -113,7 +113,7 @@
             </div>
             <div class="col-lg-2"></div>
             <div class="col-lg-4 text-center">
-                <img src="{% static 'promotion/images/homepage_doodle_4.png' %}" class="img-fluid" alt="Funscrimp_doodle">
+                <img src="{% static 'promotion/vectors/funscrimp_money03.svg' %}" class="img-fluid" alt="Funscrimp_doodle">
             </div>
         </div>
     </div>
