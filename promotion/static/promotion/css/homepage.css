@@ -1,5 +1,9 @@
 #homepage_header{
-    background-image: url("../vectors/funscrimp_backdrop.svg");
+    background-image: url("../images/funscrimp_backdrop.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 #explore_funscrimp:hover{
     background-color: #cbcbcb;

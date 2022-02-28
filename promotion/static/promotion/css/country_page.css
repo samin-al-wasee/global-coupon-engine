@@ -1,5 +1,8 @@
 #country_page_sub_header{
     background-image: url("../vectors/funscrimp_backdrop.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 #result_brands{
     max-height: 25vh;
