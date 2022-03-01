@@ -92,6 +92,6 @@ function redirect_hidden(id){
 function set_href_brand_name(target_brand_name, target_brand_url){
     const target_button = document.getElementById("popup_button");
     target_button.setAttribute("href", target_brand_url);
-    target_button.innerHTML += " ";
+    target_button.innerHTML = "Take me to ";
     target_button.innerHTML += target_brand_name;
 }
