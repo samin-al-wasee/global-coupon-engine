@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block Content %}
-    <div class="container-fluid bg-dark text-light" id="homepage_header">
+    <div class="container-fluid border-bottom border-dark bg-dark text-light" id="homepage_header">
         <div class="row mx-2 p-4 justify-content-start">
             <div class="col-md p-2">
                 <a href="#"><img height="64" width="128" src="{% static 'promotion/vectors/funscrimp_logo.svg' %}" alt="Funscrimp_company_logo"></a>
@@ -33,7 +33,7 @@
                 <div class="collapse bg-white border border-dark rounded" id="search_countries">
                     <form class="d-flex">
                         <label for="country_search"></label>
-                        <input class="form-control form-control-lg my-2 border border-dark" id="country_search" type="search" placeholder="Search..." onkeyup="live_search_country()">
+                        <input class="form-control form-control-lg my-2 border-top-0 border-start-0 border-end-0 border-dark" id="country_search" type="search" placeholder="Search..." onkeyup="live_search_country()">
                     </form>
                     <div class="p-2" id="result_countries">
                         {% for country in countries %}
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    <div class="container-fluid" id="lets_explore_funscrimp">
+    <div class="container-fluid border-bottom border-dark" id="lets_explore_funscrimp">
         <div class="row m-2 p-4 align-items-center">
             <div class="col-lg-4 p-4 text-center">
                 <img src="{% static 'promotion/vectors/funscrimp_money.svg' %}" class="img-fluid" alt="Funscrimp_doodle">
@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="container-fluid bg-light">
+    <div class="container-fluid bg-light border-bottom border-dark">
         <div class="row m-2 p-4 flex-column-reverse flex-lg-row align-items-center">
             <div class="col-lg-6 p-4">
                 <h1> Looking for Discount to save me?</h1>
@@ -92,7 +92,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid border-bottom border-dark">
         <div class="row m-2 p-4 align-items-center">
             <div class="col-lg-4 text-center">
                 <img src="{% static 'promotion/vectors/funscrimp_money02.svg' %}" class="img-fluid" alt="Funscrimp_doodle">
@@ -105,7 +105,7 @@
         </div>
     </div>
 
-    <div class="container-fluid bg-light">
+    <div class="container-fluid bg-light border-bottom border-dark">
         <div class="row mx-2 mt-2 p-4 flex-column-reverse flex-lg-row align-items-center">
             <div class="col-lg-6">
                 <h1>Now you can save me!</h1>
