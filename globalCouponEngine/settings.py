@@ -57,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'globalCouponEngine.wsgi.application'
+WSGI_APPLICATION = 'globalCouponEngine.wsgi.app'
 
 
 # Database
