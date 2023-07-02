@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "globalCouponEngine/wsgi.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "globalCouponEngine/wsgi.py"
+        }
+    ]
+}
