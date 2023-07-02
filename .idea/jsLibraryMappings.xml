@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{all, bootstrap-select, jquery-3.3.1.slim}" />
-    <file url="PROJECT" libraries="{@popperjs/core, bootstrap}" />
-    <includedPredefinedLibrary name="HTTP Response Handler" />
-  </component>
-</project>
