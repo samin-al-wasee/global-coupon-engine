@@ -57,7 +57,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'globalCouponEngine.wsgi.app'
+WSGI_APPLICATION = 'globalCouponEngine.wsgi.application'
 
 
 # Database
@@ -65,8 +65,13 @@ WSGI_APPLICATION = 'globalCouponEngine.wsgi.app'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'URL': 'postgresql://postgres:Yk0HDVqcvc4Iax9BQpFh@containers-us-west-53.railway.app:7372/railway',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'Yk0HDVqcvc4Iax9BQpFh',
+        'HOST': 'containers-us-west-53.railway.app',
+        'PORT': 7372,
     }
 }
 

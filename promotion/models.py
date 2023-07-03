@@ -22,7 +22,7 @@ def rename_brand_logo(instance, filename):
 
 
 class Country(models.Model):
-	country_name = models.CharField(max_length=20, unique=True, verbose_name="Name")
+	country_name = models.CharField(max_length=50, unique=True, verbose_name="Name")
 	country_slug = models.SlugField(editable=False)
 	country_logo = models.FileField(upload_to=rename_country_logos, verbose_name="Logo")
 	
@@ -44,7 +44,7 @@ class Country(models.Model):
 
 class Brand(models.Model):
 	exists_in = models.ManyToManyField(Country, verbose_name='Countries')
-	brand_name = models.CharField(max_length=20, unique=True, verbose_name="Name")
+	brand_name = models.CharField(max_length=50, unique=True, verbose_name="Name")
 	brand_slug = models.SlugField(editable=False)
 	brand_logo = models.FileField(upload_to=rename_brand_logo, verbose_name="Logo")
 	brand_link = models.CharField(max_length=200, verbose_name="URL")
